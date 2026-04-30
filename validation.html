@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+    #myForm{
+      background-color: rgb(129, 129, 236);
+      padding: 50px;
+      margin: 5px;
+      border-radius: 50px;
+      box-shadow: 2px;
+      width: 350px;
+      height: 180px;
+      text-align: center;
+      font-style: italic;
+      color:white;
+      
+      
+
+    }
+      
+    </style>
+</head>
+<body>
+   <form id="myForm">
+  Name: <input type="text" id="name"><br>
+  <span id="nameError" class="error"></span><br>
+
+  Email: <input type="text" id="email"><br>
+  <span id="emailError" class="error"></span><br>
+
+  Password: <input type="password" id="password"><br>
+  <span id="passError" class="error"></span><br>
+
+  Confirm Password: <input type="password" id="confirmPassword"><br>
+  <span id="confirmError" class="error"></span><br>
+
+  Mobile: <input type="text" id="mobile"><br>
+  <span id="mobileError" class="error"></span><br>
+
+  <button type="submit">Submit</button>
+</form>
+<script>
+    document.getElementById("myForm") .addEventListener("submit" , function (e) {
+        let isValid  = true;
+        let name  = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let confirmPassword= document.getElementById("confirmPassword").value;
+        let mobile= document.getElementById("mobile").value.trim();
+         
+        document.querySelectorAll('.error');
+        if(name==="",email==="",password==="",confirmPassword==="",mobile===""){
+            alert("All field are required");
+            isValid=false;
+        }
+     let Nameletter=/[a-z]+[A-Z]/;
+  if (name.match(Nameletter)){
+    document.getElementById("nameError").innerText="Invalid name format";
+    isValid=false;
+  }
+        
+         let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    document.getElementById("emailError").innerText = "Invalid email format";
+    isValid = false;
+  }
+  if (password.length < 6) {
+    document.getElementById("passError").innerText = "Password must be at least 6 characters";
+    isValid = false;
+  }
+  if (password !== confirmPassword) {
+    document.getElementById("confirmError").innerText = "Passwords do not match";
+    isValid = false;
+  }
+  let mobilePattern = /^[0-9]{10}$/;
+  if (!mobile.match(mobilePattern)) {
+    document.getElementById("mobileError").innerText = "Invalid mobile number";
+    isValid = false;
+  }
+
+  if (!isValid) {
+    e.preventDefault();
+  } else {
+    alert("Form submitted successfully!");
+  }
+
+    });
+</script>
+</body>
+</html>

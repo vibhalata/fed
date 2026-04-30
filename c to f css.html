@@ -10,7 +10,7 @@
          width: 100vw;
          position: absolute;
       background-size: cover;
-       background-repeat: no-repeat;
+        background-repeat: no-repeat;
 z-index: -1;
 
         }
@@ -41,13 +41,13 @@ z-index: -1;
     font: size 16px solid; 
 
     }#c{
-        padding: 5px;
-        margin: 2px;
+        padding: 2px;
+        margin: 10px;
 ;
         
     }#f{
-        padding: 5px;
-        margin: 2px;
+        padding: 2px;
+        margin: 10px;
     
     }
 
@@ -56,15 +56,18 @@ z-index: -1;
 
 </head>
 <body>
-    <img src="./images.jpeg" alt="not" >
+
     <div id="container">
 
 <h2>Temperature converter</h2>
-<table><td>
-<lebel for="c">Enter the celsius
-    <input id="c" type="text" placeholder="Celsius"  oninput="Fahrenheit()"></lebel></td>
+<table style="border: 3px solid;
+   
+        <tr>
+<lebel for="c>Enter the celsius
+    <input id="c" type="text" placeholder="Celsius"  oninput="Fahrenheit()"></lebel></tr>
+    <tr>
     <lebel for="f">Enter the Fahrenheit
-    <input id="f" type="text" placeholder="Fahrenheit" oninput="Celsius()"></lebel>
+    <input id="f" type="text" placeholder="Fahrenheit" oninput="Celsius()"></lebel></tr></td>
 </table>
 
     </div>

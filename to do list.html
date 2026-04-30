@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+
+<h2>To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button id="addBtn">Add Task</button>
+<div>
+  <ul id="doinglist"></ul>
+</div>
+<div>
+  <ul id="donelist">
+   
+  </ul>
+</div>
+
+<ul id="taskList"></ul>
+
+<script>
+let addBtn = document.getElementById("addBtn");
+let taskInput = document.getElementById("taskInput");
+let taskList = document.getElementById("taskList");
+
+addBtn.addEventListener("click", function () {
+    let taskText = taskInput.value;
+
+    if (taskText === "") {
+        alert("Enter a task first!");
+        return;
+    }
+
+    // Create list item
+    let li = document.createElement("li");
+    let doinglist= document.getElementById("doinglist");
+    let donelist= document.getElementById("donelist")
+
+    // Checkbox
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    checkbox.addEventListener("change", function () {
+        if (this.checked) {
+            li.style.textDecoration = "line-through";
+            donelist.appendChild(li);
+        } else {
+            li.style.textDecoration = "none";
+            doinglist.appendChild(li);
+        }
+    });
+
+    // Text
+    let text = document.createTextNode(" " + taskText);
+
+    // Delete button
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+
+    deleteBtn.addEventListener("click", function () {
+        taskList.removeChild(li);
+    });
+
+    // Append all
+    doinglist.appendChild(checkbox);
+    doinglist.appendChild(text);
+    doinglist.appendChild(deleteBtn);
+
+    doinglist.appendChild(li);
+
+    taskInput.value = "";
+});
+</script>
+
+</body>
+</html>
+        
+ 
+    
